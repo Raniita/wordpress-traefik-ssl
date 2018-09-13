@@ -1,0 +1,35 @@
+debug = false
+
+logLevel = "INFO" #DEBUG, INFO, WARN, ERROR, FATAL, PANIC
+defaultEntryPoints = ["http", "https"]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+    [entryPoints.http.redirect]
+    entryPoint = "https"
+  
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+  
+  [entryPoints.traefik]
+  address = ":8080"
+
+[api]
+  dashboard = true
+  entryPoint = "traefik"
+
+ # Let's encrypt configuration
+[acme]
+email = "yourgmail@yourprovider.com"
+storage = "/etc/traefik/acme/acme.json"
+entryPoint = "https"
+acmeLogging = true
+onDemand = false
+onHostRule = true
+  [acme.httpChallenge]
+  entryPoint = "http"
+
+[docker]
+
