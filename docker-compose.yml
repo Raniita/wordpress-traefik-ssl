@@ -55,7 +55,7 @@ services:
      - WORDPRESS_DB_USER=$DB_USER
      - WORDPRESS_DB_PASSWORD=$DB_PASSWORD
     volumes:
-      - ./config/php.conf.uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
       - ./wp-app:/var/www/html # Full wordpress project
     labels:
       - "traefik.frontend.rule=Host:$WORDPRESS_DOMAIN"      
