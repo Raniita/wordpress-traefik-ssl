@@ -45,6 +45,7 @@ services:
 
   wordpress:
     image: wordpress
+    container_name: wordpress_1
     restart: always
     depends_on:
       - mariaDB
